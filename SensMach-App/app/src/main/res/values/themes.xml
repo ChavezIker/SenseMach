@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SensMachApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/aurea_slate</item>
+        <item name="colorOnPrimary">@color/aurea_surface</item>
+        <item name="colorPrimaryContainer">#E2E8F0</item>
+        <item name="colorOnPrimaryContainer">@color/aurea_slate</item>
+        <item name="colorSecondary">@color/aurea_slate_soft</item>
+        <item name="colorOnSecondary">@color/aurea_surface</item>
+        <item name="android:colorBackground">@color/aurea_bg</item>
+        <item name="colorSurface">@color/aurea_surface</item>
+        <item name="android:statusBarColor">@color/aurea_slate</item>
+    </style>
+</resources>

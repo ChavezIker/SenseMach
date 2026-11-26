@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_resumen"
+        android:icon="@drawable/ic_nav_dashboard"
+        android:title="Resumen" />
+    <item
+        android:id="@+id/nav_monitoreo"
+        android:icon="@drawable/ic_nav_monitor"
+        android:title="Monitoreo" />
+    <item
+        android:id="@+id/nav_ordenes"
+        android:icon="@drawable/ic_nav_wrench"
+        android:title="Órdenes" />
+    <item
+        android:id="@+id/nav_accesos"
+        android:icon="@drawable/ic_nav_users"
+        android:title="Accesos" />
+    <item
+        android:id="@+id/nav_costos"
+        android:icon="@drawable/ic_nav_money"
+        android:title="Costos" />
+</menu>

@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+
+:root {
+    --aurea-slate: #263540;
+    --aurea-slate-dark: #1b262e;
+    --aurea-slate-soft: #334756;
+    --aurea-bg: #F4F6F8;
+    --aurea-gray-mid: #D1D5DB;
+    --aurea-border: #E2E8F0;
+    --aurea-white: #FFFFFF;
+    --aurea-green-bg: #DCFCE7;
+    --aurea-green-text: #166534;
+    --aurea-amber-bg: #FEF3C7;
+    --aurea-amber-text: #92400E;
+    --aurea-red-bg: #FEE2E2;
+    --aurea-red-text: #991B1B;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--aurea-bg);
+    color: #1E293B;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Logo corporativo de Aurea */
+.logo-badge-aurea {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    overflow: hidden;
+    background-color: var(--aurea-slate);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(38, 53, 64, 0.18);
+    flex-shrink: 0;
+}
+
+.logo-badge-aurea img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.topbar-aurea {
+    background-color: var(--aurea-white);
+    border-bottom: 1px solid var(--aurea-border);
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.layout-wrapper {
+    display: flex;
+    min-height: calc(100vh - 64px);
+    width: 100%;
+}
+
+/* Barra lateral organizada por categorias operativas */
+.sidebar-aurea {
+    width: 268px;
+    min-width: 268px;
+    background-color: var(--aurea-white);
+    border-right: 1px solid var(--aurea-border);
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.25s cubic-bezier(0.4, 0, 0.2, 1), padding 0.25s ease;
+    position: relative;
+}
+
+.sidebar-aurea.collapsed {
+    width: 68px;
+    min-width: 68px;
+    padding: 0.8rem 0.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0.4rem 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--aurea-border);
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-aurea.collapsed .sidebar-header {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar-title-text {
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #64748B;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sidebar-section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    color: #94A3B8;
+    text-transform: uppercase;
+    padding: 0.65rem 0.65rem 0.3rem 0.65rem;
+    white-space: nowrap;
+}
+
+.sidebar-aurea.collapsed .sidebar-title-text,
+.sidebar-aurea.collapsed .sidebar-section-label,
+.sidebar-aurea.collapsed .nav-label,
+.sidebar-aurea.collapsed .nav-badge-count,
+.sidebar-aurea.collapsed .sidebar-footer-info {
+    display: none;
+}
+
+.btn-toggle-sidebar {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #475569;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    margin-left: auto;
+}
+
+.sidebar-aurea.collapsed .btn-toggle-sidebar {
+    margin-left: 0;
+}
+
+.btn-toggle-sidebar:hover {
+    background-color: #E2E8F0;
+    color: var(--aurea-slate);
+}
+
+.nav-item-aurea {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    padding: 0.62rem 0.75rem;
+    color: #334155;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.86rem;
+    margin-bottom: 0.25rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.sidebar-aurea.collapsed .nav-item-aurea {
+    justify-content: center;
+    padding: 0.65rem 0;
+    border-left-width: 0;
+}
+
+.nav-item-aurea:hover {
+    background-color: #F1F5F9;
+    color: var(--aurea-slate);
+}
+
+.nav-item-aurea.active {
+    background-color: #E2E8F0;
+    color: var(--aurea-slate);
+    font-weight: 700;
+    border-left-color: var(--aurea-slate);
+}
+
+.sidebar-aurea.collapsed .nav-item-aurea.active {
+    background-color: var(--aurea-slate);
+    color: var(--aurea-white);
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.nav-badge-count {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.12rem 0.48rem;
+    border-radius: 999px;
+    background-color: #F1F5F9;
+    color: #475569;
+}
+
+.nav-item-aurea.active .nav-badge-count {
+    background-color: var(--aurea-slate);
+    color: #FFFFFF;
+}
+
+/* Contenedor principal */
+.main-content-aurea {
+    flex-grow: 1;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    transition: all 0.25s ease;
+}
+
+.tab-pane-aurea {
+    display: none;
+    animation: fadeInTab 0.18s ease-in-out;
+}
+
+.tab-pane-aurea.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-aurea {
+    background-color: var(--aurea-white);
+    border: 1px solid var(--aurea-border);
+    border-radius: 11px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+/* Tarjetas interactivas de activos industriales (Gemelo Digital / CMMS) */
+.asset-card-aurea {
+    background-color: var(--aurea-white);
+    border: 1px solid var(--aurea-border);
+    border-top: 4px solid var(--aurea-slate);
+    border-radius: 11px;
+    padding: 1.15rem;
+    box-shadow: 0 2px 5px rgba(15, 23, 42, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.asset-card-aurea:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(38, 53, 64, 0.08);
+}
+
+.asset-card-aurea.status-border-optimo {
+    border-top-color: #16A34A;
+}
+
+.asset-card-aurea.status-border-alerta {
+    border-top-color: #D97706;
+}
+
+.asset-card-aurea.status-border-inactiva {
+    border-top-color: #DC2626;
+}
+
+.telemetry-metric-box {
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 0.45rem 0.6rem;
+}
+
+.telemetry-bar-track {
+    width: 100%;
+    height: 6px;
+    background-color: #E2E8F0;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.telemetry-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.3s ease;
+}
+
+/* Selector segmentado tipo app moderna (Login / Registro y Conmutador de Vistas) */
+.segmented-control-aurea {
+    display: flex;
+    background-color: #F1F5F9;
+    padding: 4px;
+    border-radius: 9px;
+    border: 1px solid #E2E8F0;
+}
+
+.segmented-btn-aurea {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.83rem;
+    padding: 0.48rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.segmented-btn-aurea.active {
+    background-color: var(--aurea-white);
+    color: var(--aurea-slate);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+/* Botones de filtro tipo pill en tablas y CMMS */
+.filter-pill-aurea {
+    border: 1px solid #CBD5E1;
+    background-color: #FFFFFF;
+    color: #475569;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.32rem 0.75rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filter-pill-aurea:hover {
+    border-color: var(--aurea-slate);
+    color: var(--aurea-slate);
+}
+
+.filter-pill-aurea.active {
+    background-color: var(--aurea-slate);
+    border-color: var(--aurea-slate);
+    color: #FFFFFF;
+}
+
+.btn-aurea {
+    background-color: var(--aurea-slate);
+    color: var(--aurea-white);
+    border: none;
+    border-radius: 7px;
+    padding: 0.55rem 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-aurea:hover {
+    background-color: var(--aurea-slate-dark);
+    color: var(--aurea-white);
+}
+
+.badge-optimo {
+    background-color: var(--aurea-green-bg);
+    color: var(--aurea-green-text);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.76rem;
+    display: inline-block;
+}
+
+.badge-alerta {
+    background-color: var(--aurea-amber-bg);
+    color: var(--aurea-amber-text);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.76rem;
+    display: inline-block;
+}
+
+.badge-inactiva {
+    background-color: var(--aurea-red-bg);
+    color: var(--aurea-red-text);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.76rem;
+    display: inline-block;
+}
+
+.badge-programado {
+    background-color: #E0F2FE;
+    color: #075985;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.76rem;
+    display: inline-block;
+}
+
+.status-dot-online {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #16A34A;
+    margin-right: 6px;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18);
+}
+
+@media print {
+    .topbar-aurea,
+    .sidebar-aurea,
+    .no-print {
+        display: none !important;
+    }
+    .layout-wrapper {
+        display: block !important;
+    }
+    .main-content-aurea {
+        padding: 0 !important;
+        width: 100% !important;
+    }
+    .card-aurea {
+        box-shadow: none !important;
+        border: 1px solid #CBD5E1 !important;
+        margin-bottom: 1rem !important;
+    }
+}

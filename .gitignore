@@ -1,0 +1,32 @@
+# Carpetas de agentes y herramientas locales
+.agents/
+.gemini/
+
+# Java / Maven / IntelliJ IDEA / Tomcat
+target/
+.smarttomcat/
+.idea/workspace.xml
+.idea/shelf/
+.idea/tasks.xml
+.idea/usage.statistics.xml
+*.iml
+*.war
+*.log
+
+# Android Studio / Gradle
+.gradle/
+build/
+app/build/
+local.properties
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+hs_err_pid*.log
+
+# Archivos comprimidos y sistema operativo
+*.rar
+*.zip
+.DS_Store
+Thumbs.db

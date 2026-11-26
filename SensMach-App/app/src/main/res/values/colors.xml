@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="aurea_slate">#263540</color>
+    <color name="aurea_slate_dark">#1B262E</color>
+    <color name="aurea_slate_soft">#334756</color>
+    <color name="aurea_bg">#F4F6F8</color>
+    <color name="aurea_surface">#FFFFFF</color>
+    <color name="aurea_border">#E2E8F0</color>
+    <color name="aurea_text_primary">#1E293B</color>
+    <color name="aurea_text_secondary">#64748B</color>
+
+    <color name="badge_optimo_bg">#DCFCE7</color>
+    <color name="badge_optimo_text">#166534</color>
+    <color name="badge_alerta_bg">#FEF3C7</color>
+    <color name="badge_alerta_text">#92400E</color>
+    <color name="badge_inactiva_bg">#FEE2E2</color>
+    <color name="badge_inactiva_text">#991B1B</color>
+    <color name="badge_programado_bg">#E0F2FE</color>
+    <color name="badge_programado_text">#075985</color>
+</resources>

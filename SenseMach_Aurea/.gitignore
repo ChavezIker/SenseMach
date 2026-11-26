@@ -1,0 +1,11 @@
+# Carpetas de agentes / herramientas locales (excluidas del repositorio)
+.agents/
+.gemini/
+
+# Compilados y archivos temporales de IntelliJ / Maven / Tomcat
+target/
+.smarttomcat/
+.idea/workspace.xml
+.idea/shelf/
+*.war
+*.log
