@@ -7,7 +7,6 @@ import java.util.*;
 // dao encargado de las lecturas instrumentales en tiempo real y bitacora operativa por empresa
 public class MonitoreoDAO {
 
-    // guarda una lectura de temperatura, presion y vibracion vinculada a la empresa activa
     public void registrarLectura(String codigoEmpresa, String idMaq, double temp, double pres, double vib, String obs, String responsable, String fecha, String estado) {
         String sql = "INSERT INTO monitoreo_bitacora (codigo_empresa, codigo_maq, temperatura, presion, vibracion, observaciones, responsable, fecha_hora, estado_detectado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -27,7 +26,6 @@ public class MonitoreoDAO {
         }
     }
 
-    // consulta las lecturas registradas de la empresa para mostrarlas en la bitacora operativa
     public List<Map<String, String>> listarBitacoraPorEmpresa(String codigoEmpresa) {
         List<Map<String, String>> lista = new ArrayList<>();
         String sql = "SELECT * FROM monitoreo_bitacora WHERE codigo_empresa = ? ORDER BY id_lectura DESC LIMIT 25";

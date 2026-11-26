@@ -6,7 +6,6 @@
     android:background="@color/aurea_bg"
     android:orientation="vertical">
 
-    <!-- ENCABEZADO SUPERIOR LIMPIO (NOMBRE DE EMPRESA, SIN CÓDIGO ÚNICO) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,13 +81,11 @@
         android:indeterminate="true"
         android:visibility="gone" />
 
-    <!-- CONTENIDO DINÁMICO POR PESTAÑA -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <!-- ==================== VISTA 1: RESUMEN DE PLANTA ==================== -->
         <ScrollView
             android:id="@+id/viewResumen"
             android:layout_width="match_parent"
@@ -100,7 +97,6 @@
                 android:orientation="vertical"
                 android:padding="14dp">
 
-                <!-- 2 KPIs esenciales -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -181,7 +177,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Aviso rápido de solicitudes para el Supervisor General -->
                 <LinearLayout
                     android:id="@+id/bannerSolicitudesPendientes"
                     android:layout_width="match_parent"
@@ -246,7 +241,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- ==================== VISTA 2: REGISTRO RÁPIDO DE MONITOREO ==================== -->
         <ScrollView
             android:id="@+id/viewMonitoreo"
             android:layout_width="match_parent"
@@ -409,7 +403,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- ==================== VISTA 3: ÓRDENES DE MANTENIMIENTO ==================== -->
         <ScrollView
             android:id="@+id/viewOrdenes"
             android:layout_width="match_parent"
@@ -457,7 +450,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- ==================== VISTA 4: ACCESOS Y CLAVE (EXCLUSIVO SUPERVISOR GENERAL) ==================== -->
         <ScrollView
             android:id="@+id/viewAccesos"
             android:layout_width="match_parent"
@@ -470,7 +462,6 @@
                 android:orientation="vertical"
                 android:padding="14dp">
 
-                <!-- Tarjeta de Clave Única (único lugar visible y solo para Supervisor General) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -540,7 +531,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- ==================== VISTA 5: RESUMEN FINANCIERO (SUPERVISOR FINANCIERO) ==================== -->
         <ScrollView
             android:id="@+id/viewCostos"
             android:layout_width="match_parent"
@@ -607,7 +597,6 @@
         </ScrollView>
     </FrameLayout>
 
-    <!-- NAVEGACIÓN INFERIOR ADAPTADA AL ROL -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"

@@ -7,7 +7,6 @@ import java.util.*;
 // dao encargado del catalogo de maquinaria industrial, aislado por codigo unico de empresa
 public class MaquinariaDAO {
 
-    // verifica si el identificador del equipo ya se encuentra registrado dentro de la misma empresa
     public boolean existeId(String codigoMaq, String codigoEmpresa) {
         String sql = "SELECT codigo_maq FROM maquinaria WHERE codigo_maq = ? AND codigo_empresa = ?";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -22,7 +21,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // inserta una nueva maquina en el catalogo exclusivo de la empresa
     public boolean registrarMaquina(String codigoEmpresa, String id, String nombre, String modelo, int anio, int horas, String fallas, String estado, String fecha) {
         String sql = "INSERT INTO maquinaria (codigo_empresa, codigo_maq, nombre, modelo, anio, horas_uso, fallas_previas, costo_adquisicion, costo_mantenimiento, estado_operativo, ultimo_registro) VALUES (?, ?, ?, ?, ?, ?, ?, 0.00, 0.00, ?, ?)";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -44,7 +42,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // actualiza estado operativo, horas acumuladas y antecedente de fallas de un equipo de la empresa
     public boolean actualizarOperacionMaquina(String codigoEmpresa, String idMaq, int horasUso, String fallasPrevias, String estadoOperativo, String fecha) {
         String sql = "UPDATE maquinaria SET horas_uso = ?, fallas_previas = ?, estado_operativo = ?, ultimo_registro = ? WHERE codigo_maq = ? AND codigo_empresa = ?";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -62,7 +59,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // actualiza los costos financieros de un equipo de la empresa
     public boolean actualizarCostos(String codigoEmpresa, String idMaq, double costoAdq, double costoMant, String fecha) {
         String sql = "UPDATE maquinaria SET costo_adquisicion = ?, costo_mantenimiento = ?, ultimo_registro = ? WHERE codigo_maq = ? AND codigo_empresa = ?";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -79,7 +75,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // actualiza el estado operativo de la maquina dentro de la empresa
     public void actualizarEstado(String codigoEmpresa, String idMaq, String nuevoEstado, String fecha) {
         String sql = "UPDATE maquinaria SET estado_operativo = ?, ultimo_registro = ? WHERE codigo_maq = ? AND codigo_empresa = ?";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -94,7 +89,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // actualiza estado y antecedente de falla cuando monitoreo detecta una anomalia
     public void registrarAnomalia(String codigoEmpresa, String idMaq, String detalleAnomalia, String fecha) {
         String sql = "UPDATE maquinaria SET estado_operativo = 'Alerta', fallas_previas = ?, ultimo_registro = ? WHERE codigo_maq = ? AND codigo_empresa = ?";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -109,7 +103,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // incrementa el horometro del equipo al registrar horas trabajadas en turno
     public void incrementarHorasUso(String codigoEmpresa, String idMaq, int horasAdicionales, String fecha) {
         if (horasAdicionales <= 0) return;
         String sql = "UPDATE maquinaria SET horas_uso = horas_uso + ?, ultimo_registro = ? WHERE codigo_maq = ? AND codigo_empresa = ?";
@@ -125,7 +118,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // acumula el costo de una intervencion o refaccion al costo de mantenimiento del activo
     public void sumarCostoMantenimiento(String codigoEmpresa, String idMaq, double montoAdicional, String fecha) {
         if (montoAdicional <= 0) return;
         String sql = "UPDATE maquinaria SET costo_mantenimiento = costo_mantenimiento + ?, ultimo_registro = ? WHERE codigo_maq = ? AND codigo_empresa = ?";
@@ -141,7 +133,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // elimina un equipo del catalogo exclusivo de la empresa
     public boolean eliminarMaquina(String codigoEmpresa, String idMaq) {
         try (Connection con = ConexionDB.obtenerConexion()) {
             try (PreparedStatement ps1 = con.prepareStatement("DELETE FROM monitoreo_bitacora WHERE codigo_maq = ? AND codigo_empresa = ?")) {
@@ -165,7 +156,6 @@ public class MaquinariaDAO {
         }
     }
 
-    // lista todas las maquinas registradas pertenecientes exclusivamente a la empresa
     public List<Map<String, String>> listarMaquinariaPorEmpresa(String codigoEmpresa) {
         List<Map<String, String>> lista = new ArrayList<>();
         String sql = "SELECT * FROM maquinaria WHERE codigo_empresa = ? ORDER BY codigo_maq ASC";

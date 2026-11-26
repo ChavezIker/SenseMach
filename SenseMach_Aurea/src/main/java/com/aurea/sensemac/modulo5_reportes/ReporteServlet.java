@@ -44,7 +44,7 @@ public class ReporteServlet extends HttpServlet {
         resp.setHeader("Content-Disposition", "attachment; filename=\"" + nombreArchivo + "\"");
 
         PrintWriter out = resp.getWriter();
-        // UTF-8 BOM para lectura directa de acentos en Microsoft Excel
+
         out.write('\uFEFF');
 
         if ("mantenimientos".equalsIgnoreCase(tipoReporte)) {

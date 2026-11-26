@@ -15,7 +15,6 @@ public class UsuarioServlet extends HttpServlet {
 
     private final UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-    // verifica si el texto ingresado es el formato de ejemplo del placeholder para bloquear su uso
     private boolean esClaveEjemploProhibida(String clave) {
         if (clave == null) return false;
         String c = clave.trim().toUpperCase();
@@ -65,7 +64,6 @@ public class UsuarioServlet extends HttpServlet {
                 return;
             }
 
-            // Verifica que la Clave Unica de Empresa coincida exactamente con la empresa de la cuenta
             String claveEmpresaReal = usuario.get("codigoEmpresa") != null ? usuario.get("codigoEmpresa").trim() : "";
             if (!claveEmpresaInput.equalsIgnoreCase(claveEmpresaReal)) {
                 req.setAttribute("error", "Acceso denegado: La Clave Única de Empresa «" + claveEmpresaInput + "» no corresponde a la organización de esta cuenta.");
@@ -155,7 +153,6 @@ public class UsuarioServlet extends HttpServlet {
                 return;
             }
 
-            // CASO A: Registro como Supervisor General -> Crea una nueva empresa (con clave opcional >= 8 caracteres o autogenerada)
             if ("Supervisor General".equalsIgnoreCase(rolElegido)) {
                 String nombreEmpresa = req.getParameter("nombreEmpresa") != null ? req.getParameter("nombreEmpresa").trim() : "";
                 String rfcEmpresa = req.getParameter("rfcEmpresa") != null ? req.getParameter("rfcEmpresa").trim().toUpperCase() : "";
@@ -170,7 +167,6 @@ public class UsuarioServlet extends HttpServlet {
                     return;
                 }
 
-                // Si el Supervisor General escribio una clave personalizada, valida que tenga minimo 8 caracteres, no sea el ejemplo y no exista
                 if (!clavePersonalizada.isEmpty()) {
                     if (esClaveEjemploProhibida(clavePersonalizada)) {
                         req.setAttribute("error", "No puede utilizar «" + clavePersonalizada + "» como Clave Única de Empresa ya que es un formato de ejemplo reservado.");
@@ -217,7 +213,6 @@ public class UsuarioServlet extends HttpServlet {
                 return;
             }
 
-            // CASO B: Cualquier otro rol -> Solicita acceso mediante la Clave Unica de una empresa existente
             String codigoEmpresaInput = req.getParameter("codigoEmpresaIngreso") != null
                     ? req.getParameter("codigoEmpresaIngreso").trim().toUpperCase() : "";
 
@@ -249,7 +244,6 @@ public class UsuarioServlet extends HttpServlet {
             return;
         }
 
-        // Acciones internas del Dashboard
         String codigoEmpresaSesion = (String) sesion.getAttribute("codigoEmpresa");
         if (codigoEmpresaSesion == null || codigoEmpresaSesion.isEmpty()) {
             codigoEmpresaSesion = "AUREA-2026";

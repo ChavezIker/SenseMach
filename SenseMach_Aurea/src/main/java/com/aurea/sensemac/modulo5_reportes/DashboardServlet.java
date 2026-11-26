@@ -29,7 +29,6 @@ public class DashboardServlet extends HttpServlet {
             codigoEmpresa = "AUREA-2026";
         }
 
-        // transfiere alertas temporales de la sesion hacia el request
         if (sesion.getAttribute("alertaExito") != null) {
             req.setAttribute("alertaExito", sesion.getAttribute("alertaExito"));
             sesion.removeAttribute("alertaExito");
@@ -39,7 +38,6 @@ public class DashboardServlet extends HttpServlet {
             sesion.removeAttribute("alertaError");
         }
 
-        // consulta cada modulo filtrando estrictamente por el codigo unico de la empresa
         req.setAttribute("usuarios", usuarioDAO.listarUsuariosPorEmpresa(codigoEmpresa));
         req.setAttribute("maquinaria", maquinariaDAO.listarMaquinariaPorEmpresa(codigoEmpresa));
         req.setAttribute("bitacora", monitoreoDAO.listarBitacoraPorEmpresa(codigoEmpresa));

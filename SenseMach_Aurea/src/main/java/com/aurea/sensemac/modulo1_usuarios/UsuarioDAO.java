@@ -7,7 +7,6 @@ import java.util.*;
 // dao encargado de autenticacion con 3 factores (correo, contrasena personal y clave unica de empresa)
 public class UsuarioDAO {
 
-    // valida las credenciales personales del usuario y verifica su clave unica de empresa
     public Map<String, String> autenticar(String correo, String password) {
         String sql = "SELECT u.id_usuario, u.nombre, u.correo, u.rol, u.estado, u.codigo_empresa, " +
                      "COALESCE(e.nombre_empresa, 'Manufactura Industrial del Centro') AS nombre_empresa, " +
@@ -39,7 +38,6 @@ public class UsuarioDAO {
         return null;
     }
 
-    // verifica si un correo ya se encuentra registrado en la plataforma
     public boolean existeCorreo(String correo) {
         String sql = "SELECT id_usuario FROM usuarios WHERE LOWER(TRIM(correo)) = LOWER(TRIM(?))";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -53,7 +51,6 @@ public class UsuarioDAO {
         }
     }
 
-    // verifica si ya existe una empresa con el mismo nombre/razon social o el mismo RFC
     public boolean existeEmpresaDuplicada(String nombreEmpresa, String rfcEmpresa) {
         String sql = "SELECT codigo_empresa FROM empresas WHERE LOWER(TRIM(nombre_empresa)) = LOWER(TRIM(?)) OR LOWER(TRIM(rfc_empresa)) = LOWER(TRIM(?))";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -68,7 +65,6 @@ public class UsuarioDAO {
         }
     }
 
-    // busca una empresa por su clave/codigo unico para validar solicitudes e inicios de sesion
     public Map<String, String> obtenerEmpresaPorCodigo(String codigoEmpresa) {
         String sql = "SELECT codigo_empresa, nombre_empresa, rfc_empresa, sector_industrial FROM empresas WHERE UPPER(TRIM(codigo_empresa)) = UPPER(TRIM(?))";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -90,7 +86,6 @@ public class UsuarioDAO {
         return null;
     }
 
-    // genera automaticamente una clave unica de empresa de al menos 9 caracteres (ej. INDU-4821)
     private String generarCodigoUnico(String nombreEmpresa) {
         String limpio = nombreEmpresa.replaceAll("[^A-Za-z0-9]", "").toUpperCase();
         while (limpio.length() < 4) {
@@ -108,7 +103,6 @@ public class UsuarioDAO {
         return prefijo + "-" + (1000 + Math.abs((int) (System.currentTimeMillis() % 9000)));
     }
 
-    // registra una nueva empresa (con clave personalizada >= 8 caracteres o autogenerada) y a su Supervisor General
     public String registrarNuevaEmpresaYSupervisor(String nombreEmpresa, String rfcEmpresa, String sector, String fecha,
                                                    String codigoPersonalizado, String nombreSup, String correoSup, String passSup) {
         String codigoFinal = (codigoPersonalizado != null && !codigoPersonalizado.trim().isEmpty())
@@ -140,7 +134,6 @@ public class UsuarioDAO {
         }
     }
 
-    // registra un usuario o solicitud de acceso vinculada al codigo de una empresa
     public boolean registrarUsuario(String nombre, String correo, String pass, String rol, String estado, String codigoEmpresa) {
         String sql = "INSERT INTO usuarios (nombre, correo, password, rol, estado, codigo_empresa) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -157,7 +150,6 @@ public class UsuarioDAO {
         }
     }
 
-    // actualiza el rol y/o estado (incluyendo aprobacion de solicitudes) dentro de la misma empresa
     public boolean actualizarUsuario(int idUsuario, String nuevoRol, String nuevoEstado, String codigoEmpresa) {
         String sql = "UPDATE usuarios SET rol = ?, estado = ? WHERE id_usuario = ? AND codigo_empresa = ?";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -173,7 +165,6 @@ public class UsuarioDAO {
         }
     }
 
-    // rechaza y elimina una solicitud de acceso pendiente de la empresa
     public boolean rechazarSolicitud(int idUsuario, String codigoEmpresa) {
         String sql = "DELETE FROM usuarios WHERE id_usuario = ? AND codigo_empresa = ? AND estado = 'Pendiente'";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -187,7 +178,6 @@ public class UsuarioDAO {
         }
     }
 
-    // restablece la contrasena personal de un usuario activo validando su correo y clave unica de empresa
     public boolean restablecerPassword(String correo, String codigoEmpresa, String nuevaPassword) {
         String sql = "UPDATE usuarios SET password = ? WHERE correo = ? AND UPPER(TRIM(codigo_empresa)) = UPPER(TRIM(?)) AND estado = 'Activa'";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -202,7 +192,6 @@ public class UsuarioDAO {
         }
     }
 
-    // obtiene la lista de usuarios y solicitudes pertenecientes exclusivamente a la empresa activa
     public List<Map<String, String>> listarUsuariosPorEmpresa(String codigoEmpresa) {
         List<Map<String, String>> lista = new ArrayList<>();
         String sql = "SELECT id_usuario, nombre, correo, rol, estado, codigo_empresa FROM usuarios WHERE codigo_empresa = ? ORDER BY FIELD(estado, 'Pendiente', 'Activa', 'Inactiva'), id_usuario ASC";

@@ -9,7 +9,6 @@ import java.util.*;
 // dao encargado de ordenes de mantenimiento preventivo, correctivo y alertas por empresa
 public class MantenimientoDAO {
 
-    // evalua el nivel de alerta segun la proximidad de la fecha programada
     public static String calcularNivelAlerta(String fechaProgramada, String estadoActual) {
         if ("Completado".equalsIgnoreCase(estadoActual)) {
             return "Completado";
@@ -29,7 +28,6 @@ public class MantenimientoDAO {
         }
     }
 
-    // guarda una orden o registro de mantenimiento vinculada a la empresa activa
     public void registrarMantenimiento(String codigoEmpresa, String idMaq, String tipo, String act, String ref, String fecha, String tecnico) {
         String alertaInicial = calcularNivelAlerta(fecha, "Programado");
         String sql = "INSERT INTO mantenimientos (codigo_empresa, codigo_maq, tipo, actividades, refacciones, fecha_programada, tecnico_responsable, alerta_proxima) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -49,7 +47,6 @@ public class MantenimientoDAO {
         }
     }
 
-    // marca una orden de mantenimiento como completada dentro de la empresa
     public boolean completarMantenimiento(int idMant, String codigoEmpresa) {
         String sql = "UPDATE mantenimientos SET alerta_proxima = 'Completado' WHERE id_mant = ? AND codigo_empresa = ?";
         try (Connection con = ConexionDB.obtenerConexion();
@@ -63,7 +60,6 @@ public class MantenimientoDAO {
         }
     }
 
-    // obtiene el historial de mantenimientos registrados exclusivamente de la empresa
     public List<Map<String, String>> listarMantenimientosPorEmpresa(String codigoEmpresa) {
         List<Map<String, String>> lista = new ArrayList<>();
         String sql = "SELECT * FROM mantenimientos WHERE codigo_empresa = ? ORDER BY id_mant DESC";

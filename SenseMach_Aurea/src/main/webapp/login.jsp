@@ -27,7 +27,7 @@
 <body class="d-flex align-items-center justify-content-center py-4" style="min-height: 100vh;">
 
 <div class="card-aurea" style="max-width: 510px; width: 100%; padding: 2.1rem;">
-    <!-- CABECERA CORPORATIVA CON LOGO OFICIAL DE ÁUREA -->
+
     <div class="d-flex align-items-center mb-2">
         <div class="logo-badge-aurea me-3" style="width:46px;height:46px;border-radius:10px;">
             <img src="img/logo-aurea.png" alt="Logo Áurea">
@@ -39,7 +39,6 @@
     </div>
     <p class="small text-secondary mb-3"><i>"Eficiencia que se mide, calidad que se nota"</i></p>
 
-    <!-- CONMUTADOR: INICIAR SESIÓN / CREAR CUENTA -->
     <div class="segmented-control-aurea mb-3" id="barraSelectorAcceso">
         <button type="button" id="btnTabLogin" class="segmented-btn-aurea active" onclick="cambiarModoAcceso('login')">
             Iniciar Sesión
@@ -67,7 +66,6 @@
         </div>
     <% } %>
 
-    <!-- ==================== PANEL 1: INICIAR SESIÓN (3 DATOS OBLIGATORIOS) ==================== -->
     <div id="panelLogin">
         <form action="usuarios" method="post">
             <input type="hidden" name="accion" value="login">
@@ -103,7 +101,6 @@
         </form>
     </div>
 
-    <!-- ==================== PANEL 2: REGISTRO DE CUENTA O NUEVA EMPRESA ==================== -->
     <div id="panelRegistro" style="display: none;">
         <form action="usuarios" method="post">
             <input type="hidden" name="accion" value="registroAutonomo">
@@ -120,7 +117,6 @@
                 </select>
             </div>
 
-            <!-- BLOQUE A: UNIRSE A UNA EMPRESA EXISTENTE CON CLAVE ÚNICA -->
             <div id="bloqueUnirseEmpresa" class="p-2 mb-2 rounded" style="background-color:#F8FAFC; border:1px solid #CBD5E1;">
                 <label class="form-label small fw-bold mb-1" style="color:#263540;" for="inputCodigoEmpresa">
                     Clave Única de Empresa
@@ -131,7 +127,6 @@
                 </small>
             </div>
 
-            <!-- BLOQUE B: REGISTRAR NUEVA EMPRESA (SOLO PARA SUPERVISOR GENERAL) -->
             <div id="bloqueNuevaEmpresa" class="p-2 mb-2 rounded" style="display: none; background-color:#F8FAFC; border:1px solid #263540;">
                 <div class="small fw-bold mb-2" style="color:#263540;">Datos Oficiales de la Nueva Empresa</div>
                 <div class="mb-2">
@@ -184,7 +179,6 @@
         </form>
     </div>
 
-    <!-- ==================== PANEL 3: RESTABLECIMIENTO DE CONTRASEÑA PERSONAL ==================== -->
     <div id="panelRecuperacion" style="display: none;">
         <div class="border-top pt-2 mb-3">
             <h6 class="fw-bold mb-1" style="color:#263540;">Restablecimiento de Contraseña Personal</h6>

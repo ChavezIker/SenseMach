@@ -129,7 +129,6 @@
 </head>
 <body>
 
-<!-- BARRA SUPERIOR CON NOMBRE LIMPIO DE LA EMPRESA ACTIVA (SIN MOSTRAR CLAVE ÚNICA) -->
 <header class="topbar-aurea">
     <div class="d-flex align-items-center">
         <div class="logo-badge-aurea me-2">
@@ -171,7 +170,7 @@
 </header>
 
 <div class="layout-wrapper">
-    <!-- BARRA LATERAL ORGANIZADA POR CATEGORÍAS OPERATIVAS -->
+
     <aside id="sidebarAurea" class="sidebar-aurea">
         <div class="sidebar-header">
             <span class="sidebar-title-text">Navegación</span>
@@ -185,7 +184,6 @@
 
         <div class="sidebar-section-label">Operación en Planta</div>
 
-        <!-- PANEL GENERAL -->
         <button type="button" class="nav-item-aurea" data-tab="resumen" data-title="Panel General" onclick="seleccionarPestana('resumen')" title="Panel General de Operaciones">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="3" width="7" height="7"></rect>
@@ -196,7 +194,6 @@
             <span class="nav-label">Panel General</span>
         </button>
 
-        <!-- MONITOREO EN PLANTA -->
         <% if (puedeMonitorear) { %>
         <button type="button" class="nav-item-aurea" data-tab="monitoreo" data-title="Monitoreo en Planta" onclick="seleccionarPestana('monitoreo')" title="Monitoreo de Parámetros en Tiempo Real">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -207,7 +204,6 @@
         </button>
         <% } %>
 
-        <!-- MANTENIMIENTO -->
         <% if (puedeMantenimiento) { %>
         <button type="button" class="nav-item-aurea" data-tab="mantenimiento" data-title="Gestión de Mantenimiento" onclick="seleccionarPestana('mantenimiento')" title="Órdenes de Mantenimiento y Alertas">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -224,7 +220,6 @@
         <div class="sidebar-section-label mt-2">Gestión y Estrategia</div>
         <% } %>
 
-        <!-- CATÁLOGO DE MAQUINARIA Y COSTOS -->
         <% if (puedeMaquinaria) { %>
         <button type="button" class="nav-item-aurea" data-tab="maquinaria" data-title="Catálogo de Maquinaria" onclick="seleccionarPestana('maquinaria')" title="Catálogo de Maquinaria y Costos">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -236,7 +231,6 @@
         </button>
         <% } %>
 
-        <!-- REPORTES EJECUTIVOS -->
         <% if (puedeReportes) { %>
         <button type="button" class="nav-item-aurea" data-tab="reportes" data-title="Reportes Ejecutivos" onclick="seleccionarPestana('reportes')" title="Reportes Financieros y de Estado">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -249,7 +243,6 @@
         </button>
         <% } %>
 
-        <!-- PERSONAL Y ACCESOS -->
         <% if (esSupGeneral) { %>
         <button type="button" class="nav-item-aurea" data-tab="usuarios" data-title="Personal y Accesos" onclick="seleccionarPestana('usuarios')" title="Aprobación de Solicitudes y Personal de la Empresa">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -280,7 +273,6 @@
         </div>
     </aside>
 
-    <!-- ÁREA DE CONTENIDO PRINCIPAL -->
     <main class="main-content-aurea">
 
         <% if (request.getAttribute("alertaExito") != null) { %>
@@ -304,7 +296,6 @@
             </div>
         <% } %>
 
-        <!-- ==================== PESTAÑA: PANEL GENERAL ==================== -->
         <section id="tab-resumen" class="tab-pane-aurea">
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                 <div>
@@ -326,7 +317,6 @@
                 </div>
             </div>
 
-            <!-- KPIs INDUSTRIALES EN TIEMPO REAL -->
             <div class="row g-3 mb-4">
                 <div class="col-md-4">
                     <div class="card-aurea h-100 d-flex align-items-center justify-content-between">
@@ -399,7 +389,7 @@
                     <% } %>
                 </div>
             <% } else { %>
-                <!-- BARRA DE HERRAMIENTAS DE PLANTA -->
+
                 <div class="card-aurea mb-3 py-2 px-3">
                     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                         <div class="d-flex flex-wrap align-items-center gap-2">
@@ -419,7 +409,6 @@
                     </div>
                 </div>
 
-                <!-- VISTA 1: TARJETAS DE MONITOREO DE ACTIVOS -->
                 <div class="row g-3 mb-3" id="contenedorTarjetasPlanta">
                     <% for (Map<String, String> m : maquinaria) {
                         String idM = m.get("id");
@@ -534,7 +523,6 @@
                     <% } %>
                 </div>
 
-                <!-- VISTA 2: TABLA DETALLADA DE MAQUINARIA EN PLANTA -->
                 <div class="card-aurea" id="contenedorTablaPlanta" style="display: none;">
                     <h6 class="fw-bold mb-3" style="color:#263540;">LISTADO TÉCNICO DE MAQUINARIA — <%= nombreEmpresa.toUpperCase() %></h6>
                     <div class="table-responsive">
@@ -574,7 +562,6 @@
             <% } %>
         </section>
 
-        <!-- ==================== PESTAÑA: MONITOREO EN PLANTA ==================== -->
         <% if (puedeMonitorear) { %>
         <section id="tab-monitoreo" class="tab-pane-aurea">
             <div class="mb-3">
@@ -725,7 +712,6 @@
         </section>
         <% } %>
 
-        <!-- ==================== PESTAÑA: CATÁLOGO DE MAQUINARIA Y COSTOS ==================== -->
         <% if (puedeMaquinaria) { %>
         <section id="tab-maquinaria" class="tab-pane-aurea">
             <div class="mb-3">
@@ -916,7 +902,6 @@
         </section>
         <% } %>
 
-        <!-- ==================== PESTAÑA: MANTENIMIENTO Y ALERTAS (CMMS) ==================== -->
         <% if (puedeMantenimiento) { %>
         <section id="tab-mantenimiento" class="tab-pane-aurea">
             <div class="mb-3">
@@ -1044,7 +1029,6 @@
         </section>
         <% } %>
 
-        <!-- ==================== PESTAÑA: REPORTES EJECUTIVOS ==================== -->
         <% if (puedeReportes) { %>
         <section id="tab-reportes" class="tab-pane-aurea">
             <div class="d-none d-print-block mb-3 border-bottom pb-2">
@@ -1213,7 +1197,6 @@
         </section>
         <% } %>
 
-        <!-- ==================== PESTAÑA: PERSONAL Y ACCESOS (APROBACIÓN MULTIEMPRESA) ==================== -->
         <% if (esSupGeneral) { %>
         <section id="tab-usuarios" class="tab-pane-aurea">
             <div class="mb-3">
@@ -1221,7 +1204,6 @@
                 <small class="text-secondary">Aprobación de solicitudes vinculadas por Código Único de Empresa y gestión de permisos internos</small>
             </div>
 
-            <!-- TARJETA DE IDENTIDAD DE LA EMPRESA Y CÓDIGO ÚNICO PARA COMPARTIR -->
             <div class="card-aurea mb-4" style="border-left: 4px solid #263540;">
                 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
                     <div>
@@ -1241,7 +1223,6 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN 1: SOLICITUDES DE ACCESO PENDIENTES DE APROBACIÓN -->
             <div class="card-aurea mb-4" style="border-top: 3px solid #D97706;">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
@@ -1307,7 +1288,6 @@
                 <% } %>
             </div>
 
-            <!-- SECCIÓN 2: ALTA DIRECTA POR EL SUPERVISOR GENERAL -->
             <div class="card-aurea mb-4">
                 <h6 class="fw-bold mb-3" style="color:#263540;">ALTA DIRECTA DE COLABORADOR EN <%= nombreEmpresa.toUpperCase() %></h6>
                 <form action="usuarios" method="post" class="row g-3">
@@ -1348,7 +1328,6 @@
                 </form>
             </div>
 
-            <!-- SECCIÓN 3: DIRECTORIO DE PERSONAL DE LA EMPRESA -->
             <div class="card-aurea">
                 <h6 class="fw-bold mb-3" style="color:#263540;">DIRECTORIO DE PERSONAL AUTORIZADO (<%= nombreEmpresa %>)</h6>
                 <div class="table-responsive">

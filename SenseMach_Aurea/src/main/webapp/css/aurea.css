@@ -28,7 +28,6 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Logo corporativo de Aurea */
 .logo-badge-aurea {
     width: 38px;
     height: 38px;
@@ -68,7 +67,6 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     width: 100%;
 }
 
-/* Barra lateral organizada por categorias operativas */
 .sidebar-aurea {
     width: 268px;
     min-width: 268px;
@@ -218,7 +216,6 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     color: #FFFFFF;
 }
 
-/* Contenedor principal */
 .main-content-aurea {
     flex-grow: 1;
     width: 100%;
@@ -248,7 +245,6 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
-/* Tarjetas interactivas de activos industriales (Gemelo Digital / CMMS) */
 .asset-card-aurea {
     background-color: var(--aurea-white);
     border: 1px solid var(--aurea-border);
@@ -302,7 +298,6 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     transition: width 0.3s ease;
 }
 
-/* Selector segmentado tipo app moderna (Login / Registro y Conmutador de Vistas) */
 .segmented-control-aurea {
     display: flex;
     background-color: #F1F5F9;
@@ -330,7 +325,6 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
-/* Botones de filtro tipo pill en tablas y CMMS */
 .filter-pill-aurea {
     border: 1px solid #CBD5E1;
     background-color: #FFFFFF;

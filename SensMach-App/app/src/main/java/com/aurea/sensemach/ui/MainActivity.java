@@ -55,28 +55,23 @@ public class MainActivity extends AppCompatActivity {
     private View viewResumen, viewMonitoreo, viewOrdenes, viewAccesos, viewCostos;
     private BottomNavigationView bottomNav;
 
-    // Resumen
     private TextView tvKpiEficiencia, tvKpiOptimos, tvKpiSeguridad, tvKpiAlertasDetalle, tvBannerSolicitudes;
     private View bannerSolicitudesPendientes;
     private LinearLayout listaMaquinasContainer;
     private MaterialButton btnAltaRapidaMaquina;
 
-    // Monitoreo
     private Spinner spinnerEquipoMon;
     private TextInputEditText etTemp, etPresion, etVibracion, etHorasTurno, etObservaciones;
     private TextView tvDictamenVivo;
     private MaterialButton btnGuardarLectura;
 
-    // Ordenes
     private LinearLayout listaOrdenesContainer;
     private MaterialButton btnNuevaOrden;
 
-    // Accesos (Solo Supervisor General)
     private TextView tvClaveUnicaEmpresa;
     private MaterialButton btnCopiarClave;
     private LinearLayout listaSolicitudesContainer;
 
-    // Costos (Supervisor Financiero)
     private TextView tvTotalTco, tvDetalleFinanciero;
     private LinearLayout listaCostosContainer;
 

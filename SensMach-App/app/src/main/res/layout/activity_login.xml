@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:padding="22dp">
 
-        <!-- Botón discreto para elegir servidor (Azure / VM / Local) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +29,6 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <!-- Tarjeta principal de acceso -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +82,6 @@
                 android:textSize="12sp"
                 android:textStyle="italic" />
 
-            <!-- 1. Correo -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -100,7 +97,6 @@
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- 2. Contraseña personal -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -117,7 +113,6 @@
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- 3. Clave Única de Empresa -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
